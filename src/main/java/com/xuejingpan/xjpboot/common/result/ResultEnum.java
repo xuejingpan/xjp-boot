@@ -17,7 +17,7 @@ public enum ResultEnum {
     /**
      * 请求失败
      */
-    FAIL(-1, "fail");
+    ERROR(-1, "error");
 
     private Integer code;
 
