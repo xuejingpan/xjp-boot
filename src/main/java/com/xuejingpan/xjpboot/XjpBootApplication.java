@@ -9,5 +9,4 @@ public class XjpBootApplication {
     public static void main(String[] args) {
         SpringApplication.run(XjpBootApplication.class, args);
     }
-
 }

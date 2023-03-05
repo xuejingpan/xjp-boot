@@ -2,4 +2,4 @@
 
 java版本：1.8
 
-springboot版本：2.7.10-SNAPSHOT
+springboot版本：2.7.9

@@ -2,7 +2,7 @@ package com.xuejingpan.xjpboot.common.result;
 
 /**
  * @EnumName ResultEnum
- * @Description 结果枚举
+ * @Description 返回结果枚举
  * @Author xuejingpan
  * @Date 2023/3/1 22:55
  * @Version 1.0
@@ -15,16 +15,15 @@ public enum ResultEnum {
     SUCCESS(0, "success"),
 
     /**
-     * 请求失败
+     * 服务器内部错误
      */
-    ERROR(-1, "error");
+    INTERNAL_SERVER_ERROR(-1, "Internal Server Error"),
 
-    private Integer code;
+    BAD_REQUEST(10001, "参数校验异常：%");
 
-    private String message;
+    private final Integer code;
 
-    ResultEnum() {
-    }
+    private final String message;
 
     ResultEnum(Integer code, String message) {
         this.code = code;
@@ -35,15 +34,7 @@ public enum ResultEnum {
         return code;
     }
 
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
     public String getMessage() {
         return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 }
