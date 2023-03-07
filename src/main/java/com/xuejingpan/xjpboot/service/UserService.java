@@ -1,6 +1,7 @@
 package com.xuejingpan.xjpboot.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.xuejingpan.xjpboot.web.dto.UserPageDTO;
 import com.xuejingpan.xjpboot.web.vo.UserVO;
 
 /**
@@ -12,5 +13,10 @@ import com.xuejingpan.xjpboot.web.vo.UserVO;
  */
 public interface UserService {
 
-    Page<UserVO> getUserPage();
+    /**
+     * 分页查询用户
+     * @param userPageDTO 分页查询用户对象
+     * @return 分页后的用户
+     */
+    Page<UserVO> getUserPage(UserPageDTO userPageDTO);
 }

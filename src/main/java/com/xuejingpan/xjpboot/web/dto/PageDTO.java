@@ -21,4 +21,14 @@ public class PageDTO {
      * 每页显示条数
      */
     private Long size;
+
+    public PageDTO() {
+        this.current = 1L;
+        this.size = 10L;
+    }
+
+    public PageDTO(Long current, Long size) {
+        this.current = current == null ? 1L : current;
+        this.size = size == null ? 10L : size;
+    }
 }
