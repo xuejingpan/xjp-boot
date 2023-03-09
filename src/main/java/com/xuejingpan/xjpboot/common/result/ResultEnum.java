@@ -19,7 +19,7 @@ public enum ResultEnum {
      */
     INTERNAL_SERVER_ERROR(-1, "Internal Server Error"),
 
-    BAD_REQUEST(10001, "参数校验异常：%");
+    BAD_REQUEST(10001, "参数校验异常：%s");
 
     private final Integer code;
 

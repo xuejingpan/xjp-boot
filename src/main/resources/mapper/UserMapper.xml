@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xuejingpan.xjpboot.dao.mapper.UserMapper">
+
+    <!-- 分页查询用户(工号、姓名、部门) -->
+    <select id="getUserPage" resultType="com.xuejingpan.xjpboot.dao.entity.UserDO">
+        SELECT * FROM user
+        <where>
+            <if test="user.account != null and user.account != ''">
+                AND account LIKE CONCAT('%', #{user.account}, '%')
+            </if>
+            <if test="user.username != null and user.username != ''">
+                AND username LIKE CONCAT('%', #{user.username}, '%')
+            </if>
+            <if test="user.phone != null and user.phone != ''">
+                AND phone LIKE CONCAT('%', #{user.phone}, '%')
+            </if>
+            <if test="user.email != null and user.email != ''">
+                AND email LIKE CONCAT('%', #{user.email}, '%')
+            </if>
+            <if test="user.state != null">
+                AND state = #{user.state}
+            </if>
+        </where>
+    </select>
+</mapper>

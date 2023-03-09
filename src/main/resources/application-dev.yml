@@ -1,2 +1,16 @@
 server:
   port: 8081
+
+spring:
+  datasource:
+    name: druid
+    driverClassName: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    # allowMultiQueries=true: 允许MyBatis一次执行多条SQL语句
+    url: jdbc:mysql://localhost:3306/xjp-boot?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowMultiQueries=true
+    username: xuejingpan
+    password: xuejingpan
+    druid:
+      initial-size: 10
+      min-idle: 10
+      max-active: 100
