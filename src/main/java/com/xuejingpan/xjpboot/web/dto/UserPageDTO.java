@@ -1,5 +1,6 @@
 package com.xuejingpan.xjpboot.web.dto;
 
+import com.xuejingpan.xjpboot.common.page.BasePage;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,7 +13,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class UserPageDTO extends PageDTO {
+public class UserPageDTO extends BasePage {
 
     /**
      * 账号

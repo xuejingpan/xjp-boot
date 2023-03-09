@@ -1,16 +1,16 @@
-package com.xuejingpan.xjpboot.web.dto;
+package com.xuejingpan.xjpboot.common.page;
 
 import lombok.Data;
 
 /**
- * @ClassName PageDTO
- * @Description 分页查询基础参数
+ * @ClassName BasePage
+ * @Description TODO
  * @Author xuejingpan
- * @Date 2023/3/7 23:52
+ * @Date 2023/3/10 0:23
  * @Version 1.0
  */
 @Data
-public class PageDTO {
+public class BasePage {
 
     /**
      * 当前页
