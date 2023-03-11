@@ -1,11 +1,13 @@
 package com.xuejingpan.xjpboot.service.Impl;
 
+import cn.hutool.http.server.HttpServerRequest;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xuejingpan.xjpboot.common.util.BeanUtil;
 import com.xuejingpan.xjpboot.dao.entity.UserDO;
 import com.xuejingpan.xjpboot.dao.mapper.UserMapper;
 import com.xuejingpan.xjpboot.service.UserService;
+import com.xuejingpan.xjpboot.web.dto.UserDTO;
 import com.xuejingpan.xjpboot.web.dto.UserPageDTO;
 import com.xuejingpan.xjpboot.web.vo.UserVO;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,26 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     private UserMapper userMapper;
+
+    @Override
+    public UserVO getUser(HttpServerRequest request) {
+        return null;
+    }
+
+    @Override
+    public void addUser(UserDTO userDTO) {
+
+    }
+
+    @Override
+    public void updateUser(UserDTO userDTO) {
+
+    }
+
+    @Override
+    public void deleteUser(Integer id) {
+
+    }
 
     @Override
     public IPage<UserVO> getUserPage(UserPageDTO userPageDTO) {

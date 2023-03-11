@@ -1,13 +1,13 @@
 package com.xuejingpan.xjpboot.web.controller;
 
+import cn.hutool.http.server.HttpServerRequest;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.xuejingpan.xjpboot.common.result.Result;
 import com.xuejingpan.xjpboot.service.UserService;
+import com.xuejingpan.xjpboot.web.dto.UserDTO;
 import com.xuejingpan.xjpboot.web.dto.UserPageDTO;
 import com.xuejingpan.xjpboot.web.vo.UserVO;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -19,11 +19,34 @@ import javax.annotation.Resource;
  * @Version 1.0
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserController {
 
     @Resource
     private UserService userService;
+
+    @GetMapping
+    public Result<UserVO> getUser(HttpServerRequest request) {
+        return Result.success(userService.getUser(request));
+    }
+
+    @PostMapping
+    public Result<?> addUser(UserDTO userDTO) {
+        userService.addUser(userDTO);
+        return Result.success();
+    }
+
+    @PutMapping
+    public Result<?> updateUser(UserDTO userDTO) {
+        userService.updateUser(userDTO);
+        return Result.success();
+    }
+
+    @DeleteMapping
+    public Result<?> deleteUser(Integer id) {
+        userService.deleteUser(id);
+        return Result.success();
+    }
 
     @GetMapping
     public Result<IPage<UserVO>> getUserPage(UserPageDTO userPageDTO) {
