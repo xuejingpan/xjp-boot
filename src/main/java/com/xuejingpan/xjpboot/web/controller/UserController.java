@@ -48,7 +48,7 @@ public class UserController {
         return Result.success();
     }
 
-    @GetMapping
+    @GetMapping("/admin")
     public Result<IPage<UserVO>> getUserPage(UserPageDTO userPageDTO) {
         return Result.success(userService.getUserPage(userPageDTO));
     }
