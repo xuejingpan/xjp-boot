@@ -22,5 +22,5 @@ public interface TokenConstant {
     /**
      * 秘钥
      */
-    String SECRET = "freedom";
+    String SECRET = "xjpboot-secret";
 }
