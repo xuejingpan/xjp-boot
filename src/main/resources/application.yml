@@ -3,6 +3,10 @@ spring:
     name: xjp-boot
   profiles:
     active: @profileActive@
+  mvc:
+    # swagger配置
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
