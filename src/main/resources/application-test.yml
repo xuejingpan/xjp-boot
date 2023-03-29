@@ -1,2 +1,10 @@
 server:
   port: 8082
+
+# 日志
+logging:
+  level:
+    root: info
+    com.xuejingpan.xjpboot.dao.mapper: debug
+  file:
+    name: ./logs/xjp-boot.log

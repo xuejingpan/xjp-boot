@@ -11,15 +11,15 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * @ClassName Knife4jConfig
- * @Description knife4j配置
+ * @ClassName SwaggerConfig
+ * @Description swagger配置
  * @Author xuejingpan
  * @Date 2023/3/16 23:26
  * @Version 1.0
  */
 @Configuration
 @EnableSwagger2
-public class Knife4jConfig {
+public class SwaggerConfig {
 
     @Bean(value = "defaultApi2")
     public Docket defaultApi2() {

@@ -14,3 +14,9 @@ spring:
       initial-size: 10
       min-idle: 10
       max-active: 100
+
+# 日志
+logging:
+  level:
+    root: info
+    com.xuejingpan.xjpboot.dao.mapper: debug

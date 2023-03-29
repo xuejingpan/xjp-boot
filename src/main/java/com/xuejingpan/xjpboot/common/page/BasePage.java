@@ -1,6 +1,6 @@
 package com.xuejingpan.xjpboot.common.page;
 
-import lombok.Data;
+import lombok.Setter;
 
 /**
  * @ClassName BasePage
@@ -9,7 +9,7 @@ import lombok.Data;
  * @Date 2023/3/10 0:23
  * @Version 1.0
  */
-@Data
+@Setter
 public class BasePage {
 
     /**
@@ -21,4 +21,12 @@ public class BasePage {
      * 每页显示条数
      */
     private Long size;
+
+    public Long getCurrent() {
+        return current == null ? 1L : current;
+    }
+
+    public Long getSize() {
+        return size == null ? 10L : size;
+    }
 }

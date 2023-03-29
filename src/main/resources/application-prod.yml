@@ -4,6 +4,6 @@ server:
 # 日志
 logging:
   level:
-    root: INFO
+    root: info
   file:
     name: ./logs/xjp-boot.log
