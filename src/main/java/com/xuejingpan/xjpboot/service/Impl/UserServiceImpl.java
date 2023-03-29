@@ -50,9 +50,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public IPage<UserVO> getUserPage(UserPageDTO userPageDTO) {
-//        Long current = userPageDTO.getCurrent();
-//        Long size = userPageDTO.getSize();
-//        Page<UserDO> userPage = new Page<>(current == null ? 1L : current, size == null ? 10L : size);
         Page<UserDO> userPage = new Page<>(userPageDTO.getCurrent(), userPageDTO.getSize());
         List<UserDO> userDOList = userMapper.getUserPage(userPage, userPageDTO);
         userPage.setRecords(userDOList);
