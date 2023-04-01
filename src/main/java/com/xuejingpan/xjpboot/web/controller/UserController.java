@@ -2,6 +2,7 @@ package com.xuejingpan.xjpboot.web.controller;
 
 import cn.hutool.http.server.HttpServerRequest;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.xuejingpan.xjpboot.common.annotation.Log;
 import com.xuejingpan.xjpboot.common.result.Result;
 import com.xuejingpan.xjpboot.service.UserService;
 import com.xuejingpan.xjpboot.web.dto.UserDTO;
@@ -48,6 +49,7 @@ public class UserController {
         return Result.success();
     }
 
+    @Log
     @GetMapping("/admin")
     public Result<IPage<UserVO>> getUserPage(UserPageDTO userPageDTO) {
         return Result.success(userService.getUserPage(userPageDTO));
