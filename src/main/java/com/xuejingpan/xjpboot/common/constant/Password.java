@@ -1,13 +1,13 @@
 package com.xuejingpan.xjpboot.common.constant;
 
 /**
- * @InterfaceName PasswordConstant
+ * @InterfaceName Password
  * @Description TODO
  * @Author xuejingpan
  * @Date 2023/3/5 23:56
  * @Version 1.0
  */
-public interface PasswordConstant {
+public interface Password {
 
     String SALT = "xuejingpan";
 

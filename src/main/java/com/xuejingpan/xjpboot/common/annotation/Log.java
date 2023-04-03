@@ -1,6 +1,6 @@
 package com.xuejingpan.xjpboot.common.annotation;
 
-import com.xuejingpan.xjpboot.common.enums.LogType;
+import com.xuejingpan.xjpboot.common.enums.OperationType;
 
 import java.lang.annotation.*;
 
@@ -22,9 +22,9 @@ public @interface Log {
     String title() default "";
 
     /**
-     * 日志类型
+     * 操作类型
      */
-    LogType type() default LogType.OTHER;
+    OperationType operationType() default OperationType.OTHER;
 
     /**
      * 是否保存到数据库

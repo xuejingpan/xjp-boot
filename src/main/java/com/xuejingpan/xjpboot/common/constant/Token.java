@@ -1,13 +1,13 @@
 package com.xuejingpan.xjpboot.common.constant;
 
 /**
- * @InterfaceName TokenConstant
+ * @InterfaceName Token
  * @Description TODO
  * @Author xuejingpan
  * @Date 2023/3/13 23:23
  * @Version 1.0
  */
-public interface TokenConstant {
+public interface Token {
 
     /**
      * 名称

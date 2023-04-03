@@ -50,9 +50,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public IPage<UserVO> getUserPage(UserPageDTO userPageDTO) {
-        Page<UserDO> userPage = new Page<>(userPageDTO.getCurrent(), userPageDTO.getSize());
-        List<UserDO> userDOList = userMapper.getUserPage(userPage, userPageDTO);
-        userPage.setRecords(userDOList);
-        return userPage.convert(userDO -> BeanUtil.copyFrom(userDO, UserVO::new));
+        throw new NullPointerException();
+//        Page<UserDO> userPage = new Page<>(userPageDTO.getCurrent(), userPageDTO.getSize());
+//        List<UserDO> userDOList = userMapper.getUserPage(userPage, userPageDTO);
+//        userPage.setRecords(userDOList);
+//        return userPage.convert(userDO -> BeanUtil.copyFrom(userDO, UserVO::new));
     }
 }

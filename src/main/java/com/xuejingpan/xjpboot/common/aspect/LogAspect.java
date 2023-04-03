@@ -26,15 +26,18 @@ public class LogAspect {
     }
 
     @Around("logPointCut()")
-    public Object logAround(ProceedingJoinPoint joinPoint) {
+    public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
         Object result = null;
+        boolean isSuccess = false;
+        startTime.set(System.currentTimeMillis());
         try {
-            startTime.set(System.currentTimeMillis());
             result = joinPoint.proceed();
         } catch (Throwable throwable) {
-            throwable.printStackTrace();
+            throw throwable;
         }
+        isSuccess = true;
         log.info("执行耗时：{}毫秒", System.currentTimeMillis() - startTime.get());
+        log.info("执行{}", isSuccess ? "成功" : "失败");
         startTime.remove();
         return result;
     }

@@ -49,7 +49,7 @@ public class UserController {
         return Result.success();
     }
 
-    @Log
+    //@Log
     @GetMapping("/admin")
     public Result<IPage<UserVO>> getUserPage(UserPageDTO userPageDTO) {
         return Result.success(userService.getUserPage(userPageDTO));

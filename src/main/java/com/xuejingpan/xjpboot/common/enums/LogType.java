@@ -4,43 +4,18 @@ package com.xuejingpan.xjpboot.common.enums;
  * @EnumName LogType
  * @Description 日志类型
  * @Author xuejingpan
- * @Date 2023/3/30 22:50
+ * @Date 2023/4/4 0:11
  * @Version 1.0
  */
 public enum LogType {
 
     /**
-     * 查询
+     * 系统日志
      */
-    QUERY,
+    SystemLog,
 
     /**
-     * 插入
+     * 操作日志
      */
-    INSERT,
-
-    /**
-     * 更新
-     */
-    UPDATE,
-
-    /**
-     * 删除
-     */
-    DELETE,
-
-    /**
-     * 导入
-     */
-    IMPORT,
-
-    /**
-     * 导出
-     */
-    EXPORT,
-
-    /**
-     * 其它
-     */
-    OTHER;
+    OperationLog;
 }
