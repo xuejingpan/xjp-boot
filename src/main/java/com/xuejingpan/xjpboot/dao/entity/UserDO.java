@@ -48,7 +48,7 @@ public class UserDO {
     private String email;
 
     /**
-     * 状态：0无效，1有效
+     * 状态：1-正常，2-已失效
      */
     private Integer state;
 }

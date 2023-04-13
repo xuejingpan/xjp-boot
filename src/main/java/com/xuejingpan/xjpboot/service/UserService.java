@@ -21,7 +21,7 @@ public interface UserService {
      * @param request http请求
      * @return 当前用户信息
      */
-    UserVO getUser(HttpServerRequest request);
+    UserVO queryUser(HttpServerRequest request);
 
     /**
      * 添加用户
@@ -46,5 +46,5 @@ public interface UserService {
      * @param userPageDTO 分页查询用户对象
      * @return 分页后的用户
      */
-    IPage<UserVO> getUserPage(UserPageDTO userPageDTO);
+    IPage<UserVO> queryUserPage(UserPageDTO userPageDTO);
 }

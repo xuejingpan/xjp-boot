@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public UserVO getUser(HttpServerRequest request) {
+    public UserVO queryUser(HttpServerRequest request) {
         return null;
     }
 
@@ -49,11 +49,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public IPage<UserVO> getUserPage(UserPageDTO userPageDTO) {
-        throw new NullPointerException();
-//        Page<UserDO> userPage = new Page<>(userPageDTO.getCurrent(), userPageDTO.getSize());
-//        List<UserDO> userDOList = userMapper.getUserPage(userPage, userPageDTO);
-//        userPage.setRecords(userDOList);
-//        return userPage.convert(userDO -> BeanUtil.copyFrom(userDO, UserVO::new));
+    public IPage<UserVO> queryUserPage(UserPageDTO userPageDTO) {
+        //throw new NullPointerException();
+        Page<UserDO> userPage = new Page<>(userPageDTO.getCurrent(), userPageDTO.getSize());
+        List<UserDO> userDOList = userMapper.getUserPage(userPage, userPageDTO);
+        userPage.setRecords(userDOList);
+        return userPage.convert(userDO -> BeanUtil.copyFrom(userDO, UserVO::new));
     }
 }

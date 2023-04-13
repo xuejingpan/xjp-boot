@@ -4,16 +4,18 @@ import com.xuejingpan.xjpboot.common.page.BasePage;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.time.LocalDateTime;
+
 /**
- * @ClassName UserPageDTO
+ * @ClassName OperationLogPageDTO
  * @Description TODO
  * @Author xuejingpan
- * @Date 2023/3/7 23:59
+ * @Date 2023/4/9 22:37
  * @Version 1.0
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class UserPageDTO extends BasePage {
+public class OperationLogPageDTO extends BasePage {
 
     /**
      * 账号
@@ -26,17 +28,22 @@ public class UserPageDTO extends BasePage {
     private String username;
 
     /**
-     * 电话
+     * 操作内容
      */
-    private String phone;
+    private String content;
 
     /**
-     * 邮箱
+     * 是否执行成功
      */
-    private String email;
+    private Boolean success;
 
     /**
-     * 状态：1-正常，2-已失效
+     * 开始时间
      */
-    private Integer state;
+    private LocalDateTime startTime;
+
+    /**
+     * 结束时间
+     */
+    private LocalDateTime endTime;
 }
