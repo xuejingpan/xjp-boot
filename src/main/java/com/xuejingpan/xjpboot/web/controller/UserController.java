@@ -49,7 +49,7 @@ public class UserController {
         return Result.success();
     }
 
-    @OperationLog
+    @OperationLog(content = "分页查询用户")
     @GetMapping("/admin")
     public Result<IPage<UserVO>> getUserPage(UserPageDTO userPageDTO) {
         return Result.success(userService.queryUserPage(userPageDTO));

@@ -1,12 +1,9 @@
 package com.xuejingpan.xjpboot.common.aspect;
 
-import cn.hutool.json.JSONUtil;
 import com.xuejingpan.xjpboot.common.annotation.OperationLog;
-import com.xuejingpan.xjpboot.common.enums.LogType;
 import com.xuejingpan.xjpboot.service.HttpServletRequestService;
 import com.xuejingpan.xjpboot.service.LogService;
 import com.xuejingpan.xjpboot.service.bo.OperationLogBO;
-import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -25,7 +22,6 @@ import java.util.Arrays;
  * @Date 2023/3/30 22:28
  * @Version 1.0
  */
-@Slf4j
 @Aspect
 @Component
 public class LogAspect {
@@ -38,25 +34,19 @@ public class LogAspect {
     @Resource
     private HttpServletRequestService httpServletRequestService;
 
-//    @Pointcut("@annotation(com.xuejingpan.xjpboot.common.annotation.OperationLog)")
-//    public void logPointCut() {
-//    }
-
-    @Pointcut("execution(public * com.xuejingpan.xjpboot.web.controller..*.*(..))")
+    /**
+     * 当前注解内容表示切点为添加了@OperationLog注解的方法
+     * 如果想设置切点为所有controller类的public方法，则在@Pointcut中添加以下内容：
+     * "execution(public * com.xuejingpan.xjpboot.web.controller..*.*(..))"
+     */
+    @Pointcut("@annotation(com.xuejingpan.xjpboot.common.annotation.OperationLog)")
     public void logPointCut() {
     }
 
     @Around("logPointCut()")
     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
-        String requestData = Arrays.toString(joinPoint.getArgs());
-        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
-        Method method = methodSignature.getMethod();
-        // 判断方法是否添加了@OperationLog注解
-        if (method.isAnnotationPresent(OperationLog.class)) {
-            log.info("方法是添加了@OperationLog注解");
-        }
-        OperationLogBO operationLogBO = new OperationLogBO();
-        Object result = null;
+        OperationLogBO operationLogBO = initOperationLogBO(joinPoint);
+        Object result;
         startTime.set(System.currentTimeMillis());
         try {
             result = joinPoint.proceed();
@@ -68,27 +58,27 @@ public class LogAspect {
             operationLogBO.setExecutionTime((System.currentTimeMillis() - startTime.get()));
             operationLogBO.setResponseData(throwable.toString());
             operationLogBO.setSuccess(false);
-            result = throwable;
             throw throwable;
         } finally {
             startTime.remove();
-            log.debug("request:{}", requestData);
-            assert result != null;
-            log.debug("response:{}", result.toString());
             logService.saveOperationLog(operationLogBO);
         }
     }
 
-//    private void saveSystemLog(ProceedingJoinPoint joinPoint) throws Throwable {
-//        String request = Arrays.toString(joinPoint.getArgs());
-//        Object response = joinPoint.proceed();
-//        log.info("request:{}, response:{}", request, response);
-//    }
-//
-//    private void setOperationLogBO(ProceedingJoinPoint joinPoint, OperationLogBO operationLogBO) {
-//        String account = httpServletRequestService.getAccount();
-//        operationLogBO.setAccount(account);
-//        String username = httpServletRequestService.getUsername();
-//        operationLogBO.setUsername(username);
-//    }
+    private OperationLogBO initOperationLogBO(ProceedingJoinPoint joinPoint) {
+        String requestData = Arrays.toString(joinPoint.getArgs());
+        Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
+        String methodName = method.getName();
+        String className = joinPoint.getTarget().getClass().getSimpleName();
+        OperationLog operationLog = method.getAnnotation(OperationLog.class);
+        OperationLogBO operationLogBO = new OperationLogBO();
+        operationLogBO.setMethodName(className + "." + methodName);
+        String account = httpServletRequestService.getAccount();
+        operationLogBO.setAccount(account);
+        String username = httpServletRequestService.getUsername();
+        operationLogBO.setUsername(username);
+        operationLogBO.setRequestData(requestData);
+        operationLogBO.setContent(operationLog.content());
+        return operationLogBO;
+    }
 }

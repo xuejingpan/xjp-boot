@@ -50,7 +50,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public IPage<UserVO> queryUserPage(UserPageDTO userPageDTO) {
-        //throw new NullPointerException();
         Page<UserDO> userPage = new Page<>(userPageDTO.getCurrent(), userPageDTO.getSize());
         List<UserDO> userDOList = userMapper.getUserPage(userPage, userPageDTO);
         userPage.setRecords(userDOList);

@@ -20,4 +20,3 @@ logging:
   level:
     root: info
     com.xuejingpan.xjpboot.dao.mapper: debug
-    com.xuejingpan.xjpboot.common.aspect.LogAspect: debug
