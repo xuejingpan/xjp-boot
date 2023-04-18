@@ -25,5 +25,5 @@ public interface LogService {
      * @param operationLogPageDTO 分页模糊查询对象
      * @return 操作日志
      */
-    IPage<OperationLogVO> queryOperationLog(OperationLogPageDTO operationLogPageDTO);
+    IPage<OperationLogVO> getOperationLog(OperationLogPageDTO operationLogPageDTO);
 }

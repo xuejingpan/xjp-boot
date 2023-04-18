@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public UserVO queryUser(HttpServerRequest request) {
+    public UserVO getUser(HttpServerRequest request) {
         return null;
     }
 
@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public IPage<UserVO> queryUserPage(UserPageDTO userPageDTO) {
+    public IPage<UserVO> getUserPage(UserPageDTO userPageDTO) {
         Page<UserDO> userPage = new Page<>(userPageDTO.getCurrent(), userPageDTO.getSize());
         List<UserDO> userDOList = userMapper.getUserPage(userPage, userPageDTO);
         userPage.setRecords(userDOList);

@@ -34,7 +34,7 @@ public class LogServiceImpl implements LogService {
     }
 
     @Override
-    public IPage<OperationLogVO> queryOperationLog(OperationLogPageDTO operationLogPageDTO) {
+    public IPage<OperationLogVO> getOperationLog(OperationLogPageDTO operationLogPageDTO) {
         return null;
     }
 }

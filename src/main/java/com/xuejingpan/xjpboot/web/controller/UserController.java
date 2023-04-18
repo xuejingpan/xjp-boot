@@ -52,6 +52,6 @@ public class UserController {
     @OperationLog(content = "分页查询用户")
     @GetMapping("/admin")
     public Result<IPage<UserVO>> getUserPage(UserPageDTO userPageDTO) {
-        return Result.success(userService.queryUserPage(userPageDTO));
+        return Result.success(userService.getUserPage(userPageDTO));
     }
 }
