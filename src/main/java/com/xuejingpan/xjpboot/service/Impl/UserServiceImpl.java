@@ -1,6 +1,5 @@
 package com.xuejingpan.xjpboot.service.Impl;
 
-import cn.hutool.http.server.HttpServerRequest;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xuejingpan.xjpboot.common.util.BeanUtil;
@@ -29,7 +28,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public UserVO getUser(HttpServerRequest request) {
+    public UserVO getUser() {
         return null;
     }
 

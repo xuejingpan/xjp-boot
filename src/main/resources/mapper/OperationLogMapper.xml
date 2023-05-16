@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xuejingpan.xjpboot.dao.mapper.OperationLogMapper">
+
+    <!-- 分页查询操作日志(账号、姓名、内容、是否成功、时间) -->
+    <select id="getOperationLog" resultType="com.xuejingpan.xjpboot.dao.entity.OperationLogDO">
+        SELECT * FROM operation_log
+        <where>
+            <if test="operationLog.account != null and user.account != ''">
+                AND account LIKE CONCAT('%', #{operationLog.account}, '%')
+            </if>
+            <if test="operationLog.username != null and user.username != ''">
+                AND username LIKE CONCAT('%', #{operationLog.username}, '%')
+            </if>
+            <if test="operationLog.content != null and user.content != ''">
+                AND content LIKE CONCAT('%', #{operationLog.content}, '%')
+            </if>
+            <if test="operationLog.success != null">
+                AND success = #{operationLog.success}
+            </if>
+            <if test="operationLog.startTime != null">
+                AND operation_time <![CDATA[ >= ]]> #{operationLog.startTime}
+            </if>
+            <if test="operationLog.endTime != null">
+                AND operation_time <![CDATA[ <= ]]> #{operationLog.endTime}
+            </if>
+        </where>
+    </select>
+</mapper>

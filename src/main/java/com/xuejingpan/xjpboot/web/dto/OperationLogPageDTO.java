@@ -3,6 +3,7 @@ package com.xuejingpan.xjpboot.web.dto;
 import com.xuejingpan.xjpboot.common.page.BasePage;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 

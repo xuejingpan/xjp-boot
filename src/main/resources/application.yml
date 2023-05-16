@@ -1,12 +1,24 @@
 spring:
   application:
     name: xjp-boot
+  # 启动环境
   profiles:
     active: @profileActive@
+  jackson:
+    # VO对象时间格式
+    # 此处统一配置后，无需在再在VO对象的时间属性上添加@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")注解
+    # 此处统一配置仅支持DateTime、Date、Time，不持支java1.8中的LocalDateTime、LocalDate、LocalTime
+    # 如果要在java1.8及以后的版本中使用此配置，需在项目中使用LocalDateTimeSerializerConfig类
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
   mvc:
+    # DTO对象时间格式
+    # 此处统一配置后，无需在再在DTO对象的时间属性上添加@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")注解
+    format:
+      date-time: yyyy-MM-dd HH:mm:ss
     # swagger配置
     pathmatch:
       matching-strategy: ant_path_matcher
 
-mybatis-plus:
-  mapper-locations: classpath:mapper/*.xml
+#mybatis-plus:
+#  mapper-locations: classpath:mapper/*.xml

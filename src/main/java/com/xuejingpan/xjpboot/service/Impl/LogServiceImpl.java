@@ -1,6 +1,7 @@
 package com.xuejingpan.xjpboot.service.Impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xuejingpan.xjpboot.common.util.BeanUtil;
 import com.xuejingpan.xjpboot.dao.entity.OperationLogDO;
 import com.xuejingpan.xjpboot.dao.mapper.OperationLogMapper;
@@ -12,6 +13,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @ClassName LogServiceImpl
@@ -35,6 +37,9 @@ public class LogServiceImpl implements LogService {
 
     @Override
     public IPage<OperationLogVO> getOperationLog(OperationLogPageDTO operationLogPageDTO) {
-        return null;
+        Page<OperationLogDO> operationLogPage = new Page<>(operationLogPageDTO.getCurrent(), operationLogPageDTO.getSize());
+        List<OperationLogDO> operationLogDOList = operationLogMapper.getOperationLog(operationLogPage, operationLogPageDTO);
+        operationLogPage.setRecords(operationLogDOList);
+        return operationLogPage.convert(operationLogDO -> BeanUtil.copyFrom(operationLogDO, OperationLogVO::new));
     }
 }

@@ -18,10 +18,9 @@ public interface UserService {
 
     /**
      * 查询当前用户
-     * @param request http请求
      * @return 当前用户信息
      */
-    UserVO getUser(HttpServerRequest request);
+    UserVO getUser();
 
     /**
      * 添加用户
