@@ -42,14 +42,15 @@ public class UserController {
         return Result.success();
     }
 
-    @DeleteMapping
-    public Result<?> deleteUser(Integer id) {
+    @OperationLog(content = "注销用户")
+    @DeleteMapping("admin/{id}")
+    public Result<?> deleteUser(@PathVariable("id") Integer id) {
         userService.deleteUser(id);
         return Result.success();
     }
 
     @OperationLog(content = "分页查询用户")
-    @GetMapping("admin")
+    @GetMapping("admin/user")
     public Result<IPage<UserVO>> getUserPage(UserPageDTO userPageDTO) {
         return Result.success(userService.getUserPage(userPageDTO));
     }

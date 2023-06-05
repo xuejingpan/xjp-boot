@@ -13,12 +13,12 @@ import lombok.Setter;
 public class BasePage {
 
     /**
-     * 当前页
+     * 当前页（默认为1）
      */
     private Long current;
 
     /**
-     * 每页显示条数
+     * 每页显示条数（默认为10）
      */
     private Long size;
 

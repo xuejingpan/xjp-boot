@@ -18,7 +18,6 @@ public @interface OperationLog {
 
     /**
      * 内容
-     * 当日志类型为系统日志时此字段无效
      */
     String content() default "";
 }

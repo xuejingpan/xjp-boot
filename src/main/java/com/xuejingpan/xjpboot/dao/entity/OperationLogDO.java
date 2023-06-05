@@ -65,6 +65,11 @@ public class OperationLogDO {
     private Boolean success;
 
     /**
+     * IP地址
+     */
+    private String ip;
+
+    /**
      * 操作时间
      */
     private LocalDateTime operationTime;
