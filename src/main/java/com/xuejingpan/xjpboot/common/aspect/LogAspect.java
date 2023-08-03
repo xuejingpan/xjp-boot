@@ -9,6 +9,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -79,6 +80,8 @@ public class LogAspect {
         operationLogBO.setUsername(username);
         operationLogBO.setRequestData(requestData);
         operationLogBO.setContent(operationLog.content());
+        operationLogBO.setAccount(MDC.get("account"));
+        operationLogBO.setUsername(MDC.get("username"));
         return operationLogBO;
     }
 }

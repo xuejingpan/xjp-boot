@@ -10,17 +10,12 @@ package com.xuejingpan.xjpboot.common.constant;
 public interface Token {
 
     /**
-     * 名称
+     * 请求头名称
      */
-    String NAME = "Authorization";
+    String AUTHENTICATION = "Authorization";
 
     /**
      * 前缀
      */
     String PREFIX = "Bearer ";
-
-    /**
-     * 秘钥
-     */
-    String SECRET = "xjpboot-secret";
 }

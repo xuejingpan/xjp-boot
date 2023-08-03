@@ -1,27 +1,41 @@
 package com.xuejingpan.xjpboot.common.exception;
 
-import com.xuejingpan.xjpboot.common.result.Result;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import com.xuejingpan.xjpboot.common.result.ResultCode;
 
 /**
  * @ClassName GlobalException
  * @Description 全局异常
  * @Author xuejingpan
  * @Date 2023/3/1 23:14
- * @Version 1.0
  */
-@Slf4j
-@RestControllerAdvice
 public class GlobalException extends RuntimeException {
 
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler(Throwable.class)
-    public Result<?> handleThrowable(Throwable e) {
-        log.error("{}, 堆栈追踪信息: {}", e.toString(), e.getStackTrace());
-        return Result.error();
+    private Integer code;
+
+    public GlobalException(Integer code) {
+        this.code = code;
+    }
+
+    public GlobalException(String message){
+        super(message);
+        this.code = -1;
+    }
+
+    public GlobalException(Integer code, String message){
+        super(message);
+        this.code = code;
+    }
+
+    public GlobalException(ResultCode resultCode){
+        super(resultCode.getMessage());
+        this.code = resultCode.getCode();
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code){
+        this.code = code;
     }
 }

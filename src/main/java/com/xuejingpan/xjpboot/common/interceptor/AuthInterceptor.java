@@ -1,5 +1,6 @@
 package com.xuejingpan.xjpboot.common.interceptor;
 
+import org.slf4j.MDC;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.lang.Nullable;
@@ -25,7 +26,12 @@ public class AuthInterceptor implements HandlerInterceptor {
             response.setStatus(HttpStatus.NO_CONTENT.value());
             return true;
         }
-        return false;
+        String account = "10001";
+        String username = "测试";
+        MDC.put("account", account);
+        MDC.put("username", username);
+        System.out.println("通过");
+        return true;
     }
 
     @Override

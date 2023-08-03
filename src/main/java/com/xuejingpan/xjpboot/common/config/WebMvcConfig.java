@@ -1,18 +1,34 @@
 package com.xuejingpan.xjpboot.common.config;
 
+import com.xuejingpan.xjpboot.common.interceptor.AuthInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import javax.annotation.Resource;
 
 /**
  * @ClassName WebMvcConfig
  * @Description WebMvc配置
  * @Author xuejingpan
  * @Date 2023/4/8 13:15
- * @Version 1.0
  */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
+
+    @Resource
+    private AuthInterceptor authInterceptor;
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(authInterceptor)
+                // 拦截的请求
+                //.addPathPatterns("/web/**")
+                // 放行的请求
+                .excludePathPatterns("/login", "/register");
+        WebMvcConfigurer.super.addInterceptors(registry);
+    }
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
