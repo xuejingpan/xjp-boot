@@ -23,6 +23,10 @@ import java.util.Set;
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    /**
+     * org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+     */
 //
 //    @ResponseStatus(HttpStatus.OK)
 //    @ExceptionHandler(LoginException.class)

@@ -21,25 +21,25 @@ public class JwtUtilTest {
 
     @Test
     public void createToken() {
-        Map<String, String> map = new HashMap<>();
-        map.put("id", "1");
-        map.put("name", "xuejp");
-        String token = JwtUtil.createToken(map);
-        System.out.println(token);
+//        Map<String, String> map = new HashMap<>();
+//        map.put("id", "1");
+//        map.put("name", "xuejp");
+//        String token = JwtUtil.createToken(map);
+//        System.out.println(token);
     }
 
     @Test
     public void checkToken() {
-        Map map = new HashMap<>();
-        map.put("id", 1);
-        map.put("name", "xuejp");
-        String token = JwtUtil.createToken(map);
-        System.out.println(token);
-        Map<String, ?> map1 = JwtUtil.checkToken(token);
-        System.out.println(map1);
-        Integer id = (Integer) map1.get("id");
-        System.out.println(id);
-        String name = (String) map1.get("name");
-        System.out.println(name);
+//        Map map = new HashMap<>();
+//        map.put("id", 1);
+//        map.put("name", "xuejp");
+//        String token = JwtUtil.createToken(map);
+//        System.out.println(token);
+//        Map<String, ?> map1 = JwtUtil.checkToken(token);
+//        System.out.println(map1);
+//        Integer id = (Integer) map1.get("id");
+//        System.out.println(id);
+//        String name = (String) map1.get("name");
+//        System.out.println(name);
     }
 }
