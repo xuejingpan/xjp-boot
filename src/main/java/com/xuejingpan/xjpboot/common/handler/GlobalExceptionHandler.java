@@ -48,26 +48,26 @@ public class GlobalExceptionHandler {
 //        log.warn("自定义异常: [code:{}, message:{}]", e.getCode(), e.getMessage());
 //        return Result.error(e.getCode());
 //    }
-//
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ExceptionHandler({BindException.class,
-//            ConstraintViolationException.class,
-//            MissingServletRequestParameterException.class})
-//    public Result<?> handleParamVerificationException(Exception e) {
-//        StringBuilder errorMessage = new StringBuilder();
-//        if (e instanceof BindException) {
-//            BindingResult result = ((BindException) e).getBindingResult();
-//            result.getAllErrors().forEach(error -> errorMessage.append("[").append(error.getDefaultMessage()).append("]"));
-//        } else if (e instanceof ConstraintViolationException) {
-//            Set<ConstraintViolation<?>> result = ((ConstraintViolationException) e).getConstraintViolations();
-//            result.forEach(error -> errorMessage.append("[").append(error.getMessage()).append("]"));
-//        } else if (e instanceof MissingServletRequestParameterException) {
-//            MissingServletRequestParameterException exception = (MissingServletRequestParameterException) e;
-//            errorMessage.append(exception.getParameterName()).append("不能为空");
-//        }
-//        log.warn("参数校验异常: {}", e.toString());
-//        return Result.error(errorMessage.toString());
-//    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler({BindException.class,
+            ConstraintViolationException.class,
+            MissingServletRequestParameterException.class})
+    public Result<?> handleParamVerificationException(Exception e) {
+        StringBuilder errorMessage = new StringBuilder();
+        if (e instanceof BindException) {
+            BindingResult result = ((BindException) e).getBindingResult();
+            result.getAllErrors().forEach(error -> errorMessage.append("[").append(error.getDefaultMessage()).append("]"));
+        } else if (e instanceof ConstraintViolationException) {
+            Set<ConstraintViolation<?>> result = ((ConstraintViolationException) e).getConstraintViolations();
+            result.forEach(error -> errorMessage.append("[").append(error.getMessage()).append("]"));
+        } else if (e instanceof MissingServletRequestParameterException) {
+            MissingServletRequestParameterException exception = (MissingServletRequestParameterException) e;
+            errorMessage.append(exception.getParameterName()).append("不能为空");
+        }
+        log.warn("参数校验异常: {}", e.toString());
+        return Result.error(errorMessage.toString());
+    }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Throwable.class)

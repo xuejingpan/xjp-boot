@@ -44,6 +44,10 @@ public class Result<T> {
         return new Result<>(ResultCode.INTERNAL_SERVER_ERROR.getCode(), ResultCode.INTERNAL_SERVER_ERROR.getMessage(), null);
     }
 
+    public static Result<?> error(String message) {
+        return new Result<>(ResultCode.INTERNAL_SERVER_ERROR.getCode(), message, null);
+    }
+
     public static <T> Result<T> instance(Integer code, String message, T data) {
         Result<T> result = new Result<>();
         result.setCode(code);

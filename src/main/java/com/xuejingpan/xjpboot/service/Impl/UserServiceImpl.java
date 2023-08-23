@@ -18,8 +18,6 @@ import java.util.List;
  * @ClassName UserServiceImpl
  * @Description TODO
  * @Author xuejingpan
- * @Date 2023/3/8 0:02
- * @Version 1.0
  */
 @Service
 public class UserServiceImpl implements UserService {
