@@ -57,7 +57,7 @@ public class GlobalExceptionHandler {
         StringBuilder errorMessage = new StringBuilder();
         if (e instanceof BindException) {
             BindingResult result = ((BindException) e).getBindingResult();
-            result.getAllErrors().forEach(error -> errorMessage.append("[").append(error.getDefaultMessage()).append("]"));
+            result.getAllErrors().forEach(error -> errorMessage.append(error.getDefaultMessage()).append("、"));
         } else if (e instanceof ConstraintViolationException) {
             Set<ConstraintViolation<?>> result = ((ConstraintViolationException) e).getConstraintViolations();
             result.forEach(error -> errorMessage.append("[").append(error.getMessage()).append("]"));
