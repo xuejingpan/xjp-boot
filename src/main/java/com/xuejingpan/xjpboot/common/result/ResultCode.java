@@ -4,8 +4,6 @@ package com.xuejingpan.xjpboot.common.result;
  * @EnumName ResultCode
  * @Description 返回码
  * @Author xuejingpan
- * @Date 2023/3/1 22:55
- * @Version 1.0
  */
 public enum ResultCode {
 
@@ -20,6 +18,12 @@ public enum ResultCode {
     INTERNAL_SERVER_ERROR(-1, "Internal Server Error"),
 
     NOT_LOGIN(10001, "未登录"),
+    TOKEN_EMPTY(9001, "token为空"),
+    TOKEN_ERROR(9002, "token无效"),
+    TOKEN_EXPIRED(9003, "token已过期"),
+
+    USER_NOT_EXIST(10002, "用户不存在"),
+    PASSWORD_ERROR(10002, "密码错误"),
 
     BAD_REQUEST(40001, "参数校验异常：%s");
 

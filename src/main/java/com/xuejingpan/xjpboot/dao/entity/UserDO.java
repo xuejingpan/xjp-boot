@@ -9,8 +9,6 @@ import lombok.Data;
  * @ClassName UserDO
  * @Description 用户
  * @Author xuejingpan
- * @Date 2023/3/7 23:38
- * @Version 1.0
  */
 @Data
 @TableName(value = "user", autoResultMap = true)

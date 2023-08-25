@@ -7,8 +7,14 @@ package com.xuejingpan.xjpboot.common.constant;
  */
 public interface Password {
 
+    /**
+     * 盐
+     */
     String SALT = "xuejingpan";
 
+    /**
+     * 默认密码
+     */
     String DEFAULT_PASSWORD = "123456";
 
     /**

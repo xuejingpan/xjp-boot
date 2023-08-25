@@ -6,8 +6,6 @@ import lombok.Data;
  * @ClassName Result
  * @Description 统一返回结果
  * @Author xuejingpan
- * @Date 2023/3/1 22:51
- * @Version 1.0
  */
 @Data
 public class Result<T> {
