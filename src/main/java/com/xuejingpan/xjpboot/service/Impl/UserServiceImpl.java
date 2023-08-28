@@ -2,6 +2,7 @@ package com.xuejingpan.xjpboot.service.Impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.xuejingpan.xjpboot.common.constant.Mdc;
 import com.xuejingpan.xjpboot.common.util.BeanUtil;
 import com.xuejingpan.xjpboot.dao.entity.UserDO;
 import com.xuejingpan.xjpboot.dao.mapper.UserMapper;
@@ -9,6 +10,8 @@ import com.xuejingpan.xjpboot.service.UserService;
 import com.xuejingpan.xjpboot.web.dto.UserDTO;
 import com.xuejingpan.xjpboot.web.dto.UserPageDTO;
 import com.xuejingpan.xjpboot.web.vo.UserVO;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,6 +22,7 @@ import java.util.List;
  * @Description TODO
  * @Author xuejingpan
  */
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -47,6 +51,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public IPage<UserVO> getUserPage(UserPageDTO userPageDTO) {
+        log.info("当前用户：{}", MDC.get(Mdc.USER_ID));
         Page<UserDO> userPage = new Page<>(userPageDTO.getCurrent(), userPageDTO.getSize());
         List<UserDO> userDOList = userMapper.getUserPage(userPage, userPageDTO);
         userPage.setRecords(userDOList);

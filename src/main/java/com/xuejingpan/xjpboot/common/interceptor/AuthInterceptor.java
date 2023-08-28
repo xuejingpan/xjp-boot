@@ -1,9 +1,10 @@
 package com.xuejingpan.xjpboot.common.interceptor;
 
+import com.xuejingpan.xjpboot.common.constant.Mdc;
+import com.xuejingpan.xjpboot.common.util.UUIDUtil;
 import org.slf4j.MDC;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -14,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
  * @ClassName AuthInterceptor
  * @Description TODO
  * @Author xuejingpan
- * @Date 2023/5/31 22:30
  */
 @Component
 public class AuthInterceptor implements HandlerInterceptor {
@@ -26,16 +26,14 @@ public class AuthInterceptor implements HandlerInterceptor {
             response.setStatus(HttpStatus.NO_CONTENT.value());
             return true;
         }
-        String account = "10001";
-        String username = "测试";
-        MDC.put("account", account);
-        MDC.put("username", username);
-        System.out.println("通过");
+        MDC.put(Mdc.TRACE_ID, UUIDUtil.getUUID());
+        MDC.put(Mdc.USER_ID, "111");
         return true;
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        // 清除ThreadLocal中的数据
+        // 清除MDC中的数据
+        MDC.clear();
     }
 }

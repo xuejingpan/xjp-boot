@@ -12,8 +12,6 @@ import java.util.stream.Collectors;
  * @ClassName BeanUtil
  * @Description bean对象属性复制工具类
  * @Author xuejingpan
- * @Date 2023/3/7 22:26
- * @Version 1.0
  */
 public class BeanUtil {
 
