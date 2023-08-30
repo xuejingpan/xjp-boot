@@ -13,7 +13,7 @@ public interface Mdc {
     String TRACE_ID = "traceId";
 
     /**
-     * user_id
+     * account
      */
-    String USER_ID = "userId";
+    String ACCOUNT = "account";
 }

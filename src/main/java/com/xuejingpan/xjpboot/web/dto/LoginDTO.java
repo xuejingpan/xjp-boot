@@ -5,6 +5,7 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 /**
  * @ClassName LoginDTO
@@ -24,6 +25,6 @@ public class LoginDTO {
      * 密码
      */
     @NotBlank(message = "密码不能为空")
-    @Range(min = Password.MIN_LENGTH, max = Password.MAX_LENGTH, message = "密码长度必须在" + Password.MIN_LENGTH + "位到" + Password.MAX_LENGTH + "位之间")
+    @Size(min = Password.MIN_LENGTH, max = Password.MAX_LENGTH, message = "密码长度必须在" + Password.MIN_LENGTH + "位到" + Password.MAX_LENGTH + "位之间")
     private String password;
 }

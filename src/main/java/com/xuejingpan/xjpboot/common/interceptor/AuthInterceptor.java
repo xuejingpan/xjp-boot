@@ -1,6 +1,9 @@
 package com.xuejingpan.xjpboot.common.interceptor;
 
+import com.xuejingpan.xjpboot.common.constant.Headers;
 import com.xuejingpan.xjpboot.common.constant.Mdc;
+import com.xuejingpan.xjpboot.common.constant.Token;
+import com.xuejingpan.xjpboot.common.util.JwtUtil;
 import com.xuejingpan.xjpboot.common.util.UUIDUtil;
 import org.slf4j.MDC;
 import org.springframework.http.HttpMethod;
@@ -8,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import javax.security.auth.login.LoginException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -26,8 +30,21 @@ public class AuthInterceptor implements HandlerInterceptor {
             response.setStatus(HttpStatus.NO_CONTENT.value());
             return true;
         }
-        MDC.put(Mdc.TRACE_ID, UUIDUtil.getUUID());
-        MDC.put(Mdc.USER_ID, "111");
+        String traceId = request.getHeader(Headers.TRACE_ID);
+        if (traceId == null) {
+            traceId = UUIDUtil.getUUID();
+        }
+        MDC.put(Mdc.TRACE_ID, traceId);
+        String authorization = request.getHeader(Headers.TOKEN);
+        if (authorization == null) {
+            throw new LoginException("token为空");
+        }
+        if (!authorization.startsWith(Token.PREFIX)) {
+            throw new LoginException("token格式错误");
+        }
+        String token = authorization.replaceFirst(Token.PREFIX, "");
+        String account = JwtUtil.checkToken(token);
+        MDC.put(Mdc.ACCOUNT, account);
         return true;
     }
 

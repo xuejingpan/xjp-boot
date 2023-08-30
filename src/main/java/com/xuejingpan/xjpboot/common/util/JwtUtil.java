@@ -38,7 +38,7 @@ public class JwtUtil {
      * @param claim token的声明信息
      * @return token
      */
-    public static String createToken(Integer claim) {
+    public static String createToken(String claim) {
         return createToken(claim, EXPIRES);
     }
 
@@ -48,7 +48,7 @@ public class JwtUtil {
      * @param expires token的过期时间
      * @return token
      */
-    public static String createToken(Integer claim, long expires) {
+    public static String createToken(String claim, long expires) {
         return JWT.create()
                 // token生成时间
                 .withIssuedAt(new Date())
@@ -67,10 +67,10 @@ public class JwtUtil {
      * @throws JWTVerificationException JWT验证异常
      * @throws TokenExpiredException token过期异常
      */
-    public static Integer checkToken(String token) throws JWTVerificationException, TokenExpiredException {
+    public static String checkToken(String token) throws JWTVerificationException, TokenExpiredException {
         JWTVerifier verifier = JWT.require(Algorithm.HMAC256(SECRET)).build();
         DecodedJWT jwt = verifier.verify(token);
-        return jwt.getClaim(CLAIM).asInt();
+        return jwt.getClaim(CLAIM).asString();
     }
 
     /**
@@ -79,7 +79,7 @@ public class JwtUtil {
      * @return token声明信息
      * @throws JWTDecodeException
      */
-    public static Integer getClaim(String token) throws JWTDecodeException {
-        return JWT.decode(token).getClaim(CLAIM).asInt();
+    public static String getClaim(String token) throws JWTDecodeException {
+        return JWT.decode(token).getClaim(CLAIM).asString();
     }
 }

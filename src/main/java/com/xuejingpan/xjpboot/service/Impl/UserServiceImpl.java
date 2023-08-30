@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public IPage<UserVO> getUserPage(UserPageDTO userPageDTO) {
-        log.info("当前用户：{}", MDC.get(Mdc.USER_ID));
+        log.info("当前用户：{}", MDC.get(Mdc.ACCOUNT));
         Page<UserDO> userPage = new Page<>(userPageDTO.getCurrent(), userPageDTO.getSize());
         List<UserDO> userDOList = userMapper.getUserPage(userPage, userPageDTO);
         userPage.setRecords(userDOList);
