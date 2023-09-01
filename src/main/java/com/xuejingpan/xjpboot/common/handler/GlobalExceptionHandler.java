@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.security.auth.login.LoginException;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.util.Set;
@@ -27,13 +28,13 @@ public class GlobalExceptionHandler {
     /**
      * org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
      */
-//
-//    @ResponseStatus(HttpStatus.OK)
-//    @ExceptionHandler(LoginException.class)
-//    public Result<?> handleLoginException(LoginException e) {
-//        log.warn("登录异常: [code:{}, message:{}]", e.getCode(), e.getMessage());
-//        return Result.error(e.getCode());
-//    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @ExceptionHandler(LoginException.class)
+    public Result<?> handleLoginException(LoginException e) {
+        log.warn("登录异常: {}", e.getMessage());
+        return Result.error(e.getMessage());
+    }
 //
 //    @ResponseStatus(HttpStatus.UNAUTHORIZED)
 //    @ExceptionHandler(TokenAuthenticationException.class)
