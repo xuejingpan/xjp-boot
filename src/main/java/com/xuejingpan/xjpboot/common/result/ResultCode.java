@@ -13,9 +13,9 @@ public enum ResultCode {
     SUCCESS(0, "success"),
 
     /**
-     * 服务器内部错误
+     * 请求失败
      */
-    INTERNAL_SERVER_ERROR(-1, "Internal Server Error"),
+    FAIL(-1, "Internal Server Error"),
 
     NOT_LOGIN(10001, "未登录"),
     TOKEN_EMPTY(9001, "token为空"),

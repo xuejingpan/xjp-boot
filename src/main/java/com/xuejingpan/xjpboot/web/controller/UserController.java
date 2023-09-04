@@ -2,7 +2,7 @@ package com.xuejingpan.xjpboot.web.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.xuejingpan.xjpboot.common.annotation.OperationLog;
-import com.xuejingpan.xjpboot.common.result.Result;
+import com.xuejingpan.xjpboot.common.result.ResponseResult;
 import com.xuejingpan.xjpboot.service.UserService;
 import com.xuejingpan.xjpboot.web.dto.UserDTO;
 import com.xuejingpan.xjpboot.web.dto.UserPageDTO;
@@ -15,8 +15,6 @@ import javax.annotation.Resource;
  * @ClassName UserController
  * @Description TODO
  * @Author xuejingpan
- * @Date 2023/3/9 0:26
- * @Version 1.0
  */
 @RestController
 @RequestMapping("user")
@@ -26,32 +24,32 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public Result<UserVO> getUser() {
-        return Result.success(userService.getUser());
+    public ResponseResult<UserVO> getUser() {
+        return ResponseResult.success(userService.getUser());
     }
 
     @PostMapping
-    public Result<?> addUser(UserDTO userDTO) {
+    public ResponseResult<?> addUser(UserDTO userDTO) {
         userService.addUser(userDTO);
-        return Result.success();
+        return ResponseResult.success();
     }
 
     @PutMapping
-    public Result<?> updateUser(UserDTO userDTO) {
+    public ResponseResult<?> updateUser(UserDTO userDTO) {
         userService.updateUser(userDTO);
-        return Result.success();
+        return ResponseResult.success();
     }
 
     @OperationLog(content = "注销用户")
     @DeleteMapping("admin/{id}")
-    public Result<?> deleteUser(@PathVariable("id") Integer id) {
+    public ResponseResult<?> deleteUser(@PathVariable("id") Integer id) {
         userService.deleteUser(id);
-        return Result.success();
+        return ResponseResult.success();
     }
 
     @OperationLog(content = "分页查询用户")
     @GetMapping("admin/user")
-    public Result<IPage<UserVO>> getUserPage(UserPageDTO userPageDTO) {
-        return Result.success(userService.getUserPage(userPageDTO));
+    public ResponseResult<IPage<UserVO>> getUserPage(UserPageDTO userPageDTO) {
+        return ResponseResult.success(userService.getUserPage(userPageDTO));
     }
 }

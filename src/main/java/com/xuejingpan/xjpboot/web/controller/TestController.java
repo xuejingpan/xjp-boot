@@ -1,6 +1,6 @@
 package com.xuejingpan.xjpboot.web.controller;
 
-import com.xuejingpan.xjpboot.common.result.Result;
+import com.xuejingpan.xjpboot.common.result.ResponseResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @GetMapping
-    public Result<?> test() {
-        return Result.success("Test success !");
+    public ResponseResult<?> test() {
+        return ResponseResult.success("Test success !");
     }
 }

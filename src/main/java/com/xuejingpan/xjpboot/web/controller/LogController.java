@@ -1,7 +1,7 @@
 package com.xuejingpan.xjpboot.web.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.xuejingpan.xjpboot.common.result.Result;
+import com.xuejingpan.xjpboot.common.result.ResponseResult;
 import com.xuejingpan.xjpboot.service.LogService;
 import com.xuejingpan.xjpboot.web.dto.OperationLogPageDTO;
 import com.xuejingpan.xjpboot.web.vo.OperationLogVO;
@@ -26,7 +26,7 @@ public class LogController {
     private LogService logService;
 
     @GetMapping("operationLog")
-    public Result<IPage<OperationLogVO>> getOperationLogPage(OperationLogPageDTO operationLogPageDTO) {
-        return Result.success(logService.getOperationLog(operationLogPageDTO));
+    public ResponseResult<IPage<OperationLogVO>> getOperationLogPage(OperationLogPageDTO operationLogPageDTO) {
+        return ResponseResult.success(logService.getOperationLog(operationLogPageDTO));
     }
 }

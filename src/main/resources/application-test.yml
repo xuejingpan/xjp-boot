@@ -6,8 +6,26 @@ spring:
     # allowMultiQueries=true: 允许MyBatis一次执行多条SQL语句
     url: jdbc:mysql://10.6.133.65:3306/xjp-test?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowMultiQueries=true
     username: root
-    password: password
+    password: password123!#
     driver-class-name: com.mysql.cj.jdbc.Driver
+  # redis
+  redis:
+    database: 6
+    host: 10.6.133.65
+    password: password123!#
+    port: 6379
+    timeout: 3000
+    lettuce:
+      pool:
+        # 最大连接数（使用负值表示没有限制）
+        max-active: -1
+        # 最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1
+        # 最大空闲连接数
+        max-idle: 8
+        # 最小空闲连接数
+        min-idle: 0
+    connect-timeout: 30000ms
 
 # 日志
 logging:

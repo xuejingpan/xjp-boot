@@ -1,6 +1,6 @@
 package com.xuejingpan.xjpboot.web.controller;
 
-import com.xuejingpan.xjpboot.common.result.Result;
+import com.xuejingpan.xjpboot.common.result.ResponseResult;
 import com.xuejingpan.xjpboot.service.LoginService;
 import com.xuejingpan.xjpboot.web.dto.LoginDTO;
 import com.xuejingpan.xjpboot.web.vo.LoginVO;
@@ -29,19 +29,19 @@ public class LoginController {
 
     @ApiOperation("登录")
     @PostMapping("login")
-    public Result<LoginVO> login(@Validated @RequestBody LoginDTO loginDTO) {
-        return Result.success(loginService.login(loginDTO));
+    public ResponseResult<LoginVO> login(@Validated @RequestBody LoginDTO loginDTO) {
+        return ResponseResult.success(loginService.login(loginDTO));
     }
 
     @ApiOperation("登出")
     @DeleteMapping("logout")
-    public Result<?> logout() {
-        return Result.success();
+    public ResponseResult<?> logout() {
+        return ResponseResult.success();
     }
 
     @ApiOperation("注册")
     @PostMapping("register")
-    public Result<?> register() {
-        return Result.success();
+    public ResponseResult<?> register() {
+        return ResponseResult.success();
     }
 }
