@@ -16,7 +16,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 public class RedisConfig {
 
     /**
-     * 以下错误并不影响正常使用，可通过降低springboot版本或设置idea不提示改错误来解决
+     * 以下错误并不影响正常使用，可通过降低springboot版本或设置idea不提示该错误来解决
      * Could not autowire. No beans of 'RedisConnectionFactory' type found.
      */
     @Bean

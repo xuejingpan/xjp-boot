@@ -29,6 +29,7 @@ public class GlobalExceptionHandler {
 
     /**
      * org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+     * 知乎：账号不存在：401，密码错误：400
      */
 
     @ResponseStatus(HttpStatus.OK)

@@ -10,15 +10,16 @@ import lombok.Data;
 @Data
 public class ResponseResult<T> {
 
+    /**
+     * 返回码
+     */
     private Integer code;
 
+    
     private String message;
 
     private T data;
-
-    public ResponseResult() {
-    }
-
+    
     public ResponseResult(Integer code, String message) {
         this.code = code;
         this.message = message;
@@ -44,13 +45,5 @@ public class ResponseResult<T> {
 
     public static ResponseResult<?> fail(String message) {
         return new ResponseResult<>(ResultCode.FAIL.getCode(), message, null);
-    }
-
-    public static <T> ResponseResult<T> instance(Integer code, String message, T data) {
-        ResponseResult<T> responseResult = new ResponseResult<>();
-        responseResult.setCode(code);
-        responseResult.setMessage(message);
-        responseResult.setData(data);
-        return responseResult;
     }
 }
