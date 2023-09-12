@@ -1,6 +1,6 @@
 package com.xuejingpan.xjpboot.common.exception;
 
-import com.xuejingpan.xjpboot.common.result.ResultCode;
+import com.xuejingpan.xjpboot.common.result.ResultEnum;
 
 /**
  * @ClassName GlobalException
@@ -26,9 +26,9 @@ public class GlobalException extends RuntimeException {
         this.code = code;
     }
 
-    public GlobalException(ResultCode resultCode){
-        super(resultCode.getMessage());
-        this.code = resultCode.getCode();
+    public GlobalException(ResultEnum resultEnum){
+        super(resultEnum.getMessage());
+        this.code = resultEnum.getCode();
     }
 
     public Integer getCode() {

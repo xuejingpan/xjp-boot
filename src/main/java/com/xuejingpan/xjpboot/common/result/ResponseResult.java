@@ -32,18 +32,18 @@ public class ResponseResult<T> {
     }
 
     public static <T> ResponseResult<T> success() {
-        return new ResponseResult<>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMessage());
+        return new ResponseResult<>(ResultEnum.SUCCESS.getCode(), ResultEnum.SUCCESS.getMessage());
     }
 
     public static <T> ResponseResult<T> success(T data) {
-        return new ResponseResult<>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMessage(), data);
+        return new ResponseResult<>(ResultEnum.SUCCESS.getCode(), ResultEnum.SUCCESS.getMessage(), data);
     }
 
     public static ResponseResult<?> fail() {
-        return new ResponseResult<>(ResultCode.FAIL.getCode(), ResultCode.FAIL.getMessage(), null);
+        return new ResponseResult<>(ResultEnum.FAIL.getCode(), ResultEnum.FAIL.getMessage(), null);
     }
 
     public static ResponseResult<?> fail(String message) {
-        return new ResponseResult<>(ResultCode.FAIL.getCode(), message, null);
+        return new ResponseResult<>(ResultEnum.FAIL.getCode(), message, null);
     }
 }

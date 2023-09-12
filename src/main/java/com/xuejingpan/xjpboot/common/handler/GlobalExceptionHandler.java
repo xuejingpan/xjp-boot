@@ -1,19 +1,22 @@
 package com.xuejingpan.xjpboot.common.handler;
 
+import com.xuejingpan.xjpboot.common.exception.AuthenticationException;
+import com.xuejingpan.xjpboot.common.exception.AuthorizationException;
+import com.xuejingpan.xjpboot.common.exception.ExceptionData;
+import com.xuejingpan.xjpboot.common.exception.GlobalException;
 import com.xuejingpan.xjpboot.common.result.ResponseResult;
-import com.xuejingpan.xjpboot.common.result.ResultCode;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import javax.security.auth.login.LoginException;
 import javax.validation.ConstraintViolationException;
 import javax.validation.ValidationException;
 
@@ -32,26 +35,27 @@ public class GlobalExceptionHandler {
      * 知乎：账号不存在：401，密码错误：400
      */
 
-    @ResponseStatus(HttpStatus.OK)
-    @ExceptionHandler(LoginException.class)
-    public ResponseResult<?> handleLoginException(LoginException e) {
-        log.warn("登录异常: {}", e.getMessage());
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseResult<?> handleAuthenticationException(AuthenticationException e) {
+        log.warn("认证异常: {}", e.getMessage());
         return ResponseResult.fail(e.getMessage());
     }
-//
-//    @ResponseStatus(HttpStatus.UNAUTHORIZED)
-//    @ExceptionHandler(TokenAuthenticationException.class)
-//    public Result<Object> handleTokenAuthenticationException(TokenAuthenticationException e) {
-//        log.warn("token认证异常: [code:{}, message:{}]", e.getCode(), e.getMessage());
-//        return Result.error(e.getCode());
-//    }
-//
-//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-//    @ExceptionHandler(SsoAuthException.class)
-//    public Result<?> handleSsoAuthException(SsoAuthException e) {
-//        log.warn("自定义异常: [code:{}, message:{}]", e.getCode(), e.getMessage());
-//        return Result.error(e.getCode());
-//    }
+
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ExceptionHandler(AuthorizationException.class)
+    public ResponseResult<?> handleAuthorizationException(AuthorizationException e) {
+        log.warn("授权异常: {}", e.getMessage());
+        return ResponseResult.fail(e.getMessage());
+    }
+
+
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(GlobalException.class)
+    public ResponseResult<?> handleGlobalException(GlobalException e) {
+        log.warn("全局异常: {}", e.getMessage());
+        return ResponseResult.fail(e.getMessage());
+    }
 
 //    @ResponseStatus(HttpStatus.BAD_REQUEST)
 //    @ExceptionHandler({BindException.class,
@@ -76,12 +80,11 @@ public class GlobalExceptionHandler {
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(value = { BindException.class, ValidationException.class, MethodArgumentNotValidException.class })
     public ResponseResult<?> handleParameterVerificationException(@NonNull Exception e) {
-        log.warn("Exception: {}", e.getMessage());
+        ExceptionData.ExceptionDataBuilder exceptionDataBuilder = ExceptionData.builder();
         if (e instanceof BindException) {
             BindingResult bindingResult = ((MethodArgumentNotValidException) e).getBindingResult();
-            bindingResult.getAllErrors().stream()
-                    .map(DefaultMessageSourceResolvable::getDefaultMessage)
-                    .forEach(ResponseResult::fail);
+            bindingResult.getAllErrors()
+                    .forEach(a -> exceptionDataBuilder.data(((FieldError) a).getField() + ": " + a.getDefaultMessage()));
         } else if (e instanceof ConstraintViolationException) {
             if (e.getMessage() != null) {
                 ResponseResult.fail(e.getMessage());
