@@ -11,8 +11,6 @@ import java.time.LocalDateTime;
  * @ClassName OperationLogPageDTO
  * @Description TODO
  * @Author xuejingpan
- * @Date 2023/4/9 22:37
- * @Version 1.0
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

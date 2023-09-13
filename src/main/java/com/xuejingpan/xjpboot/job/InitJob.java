@@ -23,8 +23,8 @@ public class InitJob implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) {
         log.info("----- 开始初始化 -----");
-        redisUtil.set("hello", "hello world");
-        log.info(redisUtil.get("hello"));
+//        redisUtil.set("hello", "hello world");
+//        log.info(redisUtil.get("hello"));
         log.info("----- 初始化完成 -----");
     }
 }

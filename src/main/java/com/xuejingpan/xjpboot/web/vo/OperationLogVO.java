@@ -9,8 +9,6 @@ import java.time.LocalDateTime;
  * @ClassName OperationLogVO
  * @Description TODO
  * @Author xuejingpan
- * @Date 2023/4/9 22:32
- * @Version 1.0
  */
 @Data
 public class OperationLogVO {
