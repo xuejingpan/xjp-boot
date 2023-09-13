@@ -49,13 +49,6 @@ public class GlobalExceptionHandler {
     }
 
 
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler(GlobalException.class)
-    public ResponseResult<?> handleGlobalException(GlobalException e) {
-        log.warn("全局异常: {}", e.getMessage());
-        return ResponseResult.fail(e.getMessage());
-    }
-
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public ResponseResult<?> handleMissingServletRequestParameterException(MissingServletRequestParameterException e) {
@@ -95,7 +88,14 @@ public class GlobalExceptionHandler {
 //        }
 //        return ResponseResult.fail("invalid parameter");
 //    }
-    
+
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(GlobalException.class)
+    public ResponseResult<?> handleGlobalException(GlobalException e) {
+        log.warn("全局异常: {}", e.getMessage());
+        return ResponseResult.fail(e.getMessage());
+    }
+
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Throwable.class)
     public ResponseResult<?> handleThrowable(Throwable throwable) {
