@@ -1,15 +1,11 @@
 package com.xuejingpan.xjpboot.web.vo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 /**
  * @ClassName UserVO
  * @Description TODO
  * @Author xuejingpan
- * @Date 2023/3/7 23:46
- * @Version 1.0
  */
 @Data
 public class UserVO {

@@ -1,7 +1,6 @@
 package com.xuejingpan.xjpboot.common.aspect;
 
 import com.xuejingpan.xjpboot.common.annotation.OperationLog;
-import com.xuejingpan.xjpboot.service.HttpServletRequestService;
 import com.xuejingpan.xjpboot.service.LogService;
 import com.xuejingpan.xjpboot.service.bo.OperationLogBO;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -31,9 +30,6 @@ public class LogAspect {
 
     @Resource
     private LogService logService;
-
-    @Resource
-    private HttpServletRequestService httpServletRequestService;
 
     /**
      * 当前注解内容表示切点为添加了@OperationLog注解的方法
@@ -74,14 +70,9 @@ public class LogAspect {
         OperationLog operationLog = method.getAnnotation(OperationLog.class);
         OperationLogBO operationLogBO = new OperationLogBO();
         operationLogBO.setMethodName(className + "." + methodName);
-        String account = httpServletRequestService.getAccount();
-        operationLogBO.setAccount(account);
-        String username = httpServletRequestService.getUsername();
-        operationLogBO.setUsername(username);
         operationLogBO.setRequestData(requestData);
         operationLogBO.setContent(operationLog.content());
         operationLogBO.setAccount(MDC.get("account"));
-        operationLogBO.setUsername(MDC.get("username"));
         return operationLogBO;
     }
 }

@@ -2,7 +2,6 @@ package com.xuejingpan.xjpboot.web.dto;
 
 import com.xuejingpan.xjpboot.common.constant.Password;
 import lombok.Data;
-import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;

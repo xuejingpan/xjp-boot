@@ -6,8 +6,6 @@ import lombok.Data;
  * @ClassName UserDTO
  * @Description TODO
  * @Author xuejingpan
- * @Date 2023/3/11 23:16
- * @Version 1.0
  */
 @Data
 public class UserDTO {
