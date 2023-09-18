@@ -5,6 +5,7 @@ import com.xuejingpan.xjpboot.common.exception.AuthorizationException;
 import com.xuejingpan.xjpboot.common.exception.GlobalException;
 import com.xuejingpan.xjpboot.common.result.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.http.fileupload.impl.SizeLimitExceededException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
@@ -88,6 +90,13 @@ public class GlobalExceptionHandler {
 //        }
 //        return ResponseResult.fail("invalid parameter");
 //    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public ResponseResult<?> handleMaxUploadSizeExceededException(SizeLimitExceededException e) {
+        log.warn("文件过大异常: {}", e.getMessage());
+        return ResponseResult.fail(e.getMessage());
+    }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(GlobalException.class)
