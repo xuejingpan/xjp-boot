@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
  * @Version 1.0
  */
 @Configuration
-@MapperScan("com.xuejingpan.xjpboot.dao.mapper")
+@MapperScan("com.xuejingpan.xjpboot.**.mapper")
 public class MybatisPlusConfig {
 
     @Bean
