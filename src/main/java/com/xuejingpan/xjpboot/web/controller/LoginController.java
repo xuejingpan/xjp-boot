@@ -18,7 +18,6 @@ import javax.annotation.Resource;
  * @ClassName LoginController
  * @Description TODO
  * @Author xuejingpan
- * @Date 2023/3/12 23:42
  */
 @Api(tags = "登录")
 @RestController

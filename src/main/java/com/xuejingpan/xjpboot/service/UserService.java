@@ -1,8 +1,6 @@
 package com.xuejingpan.xjpboot.service;
 
-import cn.hutool.http.server.HttpServerRequest;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xuejingpan.xjpboot.web.dto.UserDTO;
 import com.xuejingpan.xjpboot.web.dto.UserPageDTO;
 import com.xuejingpan.xjpboot.web.vo.UserVO;
@@ -11,8 +9,6 @@ import com.xuejingpan.xjpboot.web.vo.UserVO;
  * @InterfaceName UserService
  * @Description TODO
  * @Author xuejingpan
- * @Date 2023/3/7 23:45
- * @Version 1.0
  */
 public interface UserService {
 

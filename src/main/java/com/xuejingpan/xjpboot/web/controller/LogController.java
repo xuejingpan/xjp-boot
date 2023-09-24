@@ -15,8 +15,6 @@ import javax.annotation.Resource;
  * @ClassName LogController
  * @Description TODO
  * @Author xuejingpan
- * @Date 2023/4/19 23:45
- * @Version 1.0
  */
 @RestController
 @RequestMapping("log")

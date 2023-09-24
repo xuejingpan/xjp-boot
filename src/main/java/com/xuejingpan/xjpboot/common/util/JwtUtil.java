@@ -14,7 +14,6 @@ import java.util.Date;
  * @ClassName JWTUtil
  * @Description JWT工具类
  * @Author xuejingpan
- * @Date 2023/6/19 23:22
  */
 public class JwtUtil {
 
@@ -77,7 +76,7 @@ public class JwtUtil {
      * 获取token的声明信息（过期也可以正常解析）
      * @param token token
      * @return token声明信息
-     * @throws JWTDecodeException
+     * @throws JWTDecodeException JWT解析异常
      */
     public static String getClaim(String token) throws JWTDecodeException {
         return JWT.decode(token).getClaim(CLAIM).asString();

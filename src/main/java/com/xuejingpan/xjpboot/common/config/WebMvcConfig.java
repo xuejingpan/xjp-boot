@@ -26,7 +26,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 // 拦截的请求
                 //.addPathPatterns("/web/**")
                 // 放行的请求
-                .excludePathPatterns("/login", "/register", "/doc.html", "/webjars/**", "/swagger-resources", "/v3/api-docs");
+                .excludePathPatterns("/login", "/register", "/doc.html", "/webjars/**", "/swagger-resources", "/v3/api-docs", "/favicon.ico");
         WebMvcConfigurer.super.addInterceptors(registry);
     }
 

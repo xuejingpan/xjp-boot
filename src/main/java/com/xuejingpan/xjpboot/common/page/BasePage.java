@@ -6,8 +6,6 @@ import lombok.Setter;
  * @ClassName BasePage
  * @Description TODO
  * @Author xuejingpan
- * @Date 2023/3/10 0:23
- * @Version 1.0
  */
 @Setter
 public class BasePage {

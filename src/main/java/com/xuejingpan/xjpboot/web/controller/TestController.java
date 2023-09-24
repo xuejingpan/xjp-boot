@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @ClassName TestController
  * @Description 测试
  * @Author xuejingpan
- * @Date 2023/3/2 23:34
- * @Version 1.0
  */
 @RestController
 public class TestController {

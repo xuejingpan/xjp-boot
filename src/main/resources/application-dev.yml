@@ -10,9 +10,9 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   # redis
   redis:
-    database: 6
-    host: 10.6.133.65
-    password: password123!#
+    database: 0
+    host: 127.0.0.1
+    password: xuejingpan
     port: 6379
     timeout: 3000
     lettuce:

@@ -25,7 +25,6 @@ import java.util.Set;
  * @ClassName GlobalExceptionHandler
  * @Description 全局异常处理
  * @Author xuejingpan
- * @Date 2023/6/12 23:15
  */
 @Slf4j
 @RestControllerAdvice

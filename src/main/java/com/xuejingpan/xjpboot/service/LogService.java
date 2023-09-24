@@ -9,8 +9,6 @@ import com.xuejingpan.xjpboot.web.vo.OperationLogVO;
  * @InterfaceName LogService
  * @Description TODO
  * @Author xuejingpan
- * @Date 2023/4/9 0:18
- * @Version 1.0
  */
 public interface LogService {
 

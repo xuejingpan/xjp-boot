@@ -19,8 +19,6 @@ import java.util.List;
  * @ClassName LogServiceImpl
  * @Description TODO
  * @Author xuejingpan
- * @Date 2023/4/9 0:22
- * @Version 1.0
  */
 @Service
 public class LogServiceImpl implements LogService {

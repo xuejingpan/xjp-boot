@@ -7,7 +7,6 @@ import com.xuejingpan.xjpboot.web.vo.LoginVO;
  * @Interface LoginService
  * @Description TODO
  * @Author 80010745
- * @Date 2023/8/22 17:48
  */
 public interface LoginService {
 

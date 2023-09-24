@@ -13,8 +13,6 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @ClassName AsyncConfig
  * @Description 异步配置
  * @Author xuejingpan
- * @Date 2023/3/17 23:42
- * @Version 1.0
  */
 @EnableAsync
 @Configuration

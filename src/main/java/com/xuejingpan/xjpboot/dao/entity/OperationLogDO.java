@@ -11,8 +11,6 @@ import java.time.LocalDateTime;
  * @ClassName OperationLogDO
  * @Description TODO
  * @Author xuejingpan
- * @Date 2023/4/8 23:56
- * @Version 1.0
  */
 @Data
 @TableName(value = "operation_log", autoResultMap = true)

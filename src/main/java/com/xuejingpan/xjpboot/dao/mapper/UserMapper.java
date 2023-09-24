@@ -13,8 +13,6 @@ import java.util.List;
  * @InterfaceName UserMapper
  * @Description TODO
  * @Author xuejingpan
- * @Date 2023/3/7 23:43
- * @Version 1.0
  */
 @Repository
 public interface UserMapper extends BaseMapper<UserDO> {

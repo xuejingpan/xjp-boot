@@ -6,8 +6,6 @@ import lombok.Data;
  * @ClassName OperationLogBO
  * @Description TODO
  * @Author xuejingpan
- * @Date 2023/4/9 0:21
- * @Version 1.0
  */
 @Data
 public class OperationLogBO {
