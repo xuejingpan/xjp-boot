@@ -1,5 +1,8 @@
 package com.xuejingpan.xjpboot.common.handler;
 
+import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.xuejingpan.xjpboot.common.exception.AuthenticationException;
 import com.xuejingpan.xjpboot.common.exception.AuthorizationException;
 import com.xuejingpan.xjpboot.common.exception.GlobalException;
@@ -42,6 +45,13 @@ public class GlobalExceptionHandler {
         return ResponseResult.fail(e.getMessage());
     }
 
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ExceptionHandler({JWTVerificationException.class, TokenExpiredException.class, JWTDecodeException.class})
+    public ResponseResult<?> handleJwtException(Exception e) {
+        log.warn("token校验异常: {}", e.toString());
+        return ResponseResult.fail(e.getMessage());
+    }
+
     @ResponseStatus(HttpStatus.FORBIDDEN)
     @ExceptionHandler(AuthorizationException.class)
     public ResponseResult<?> handleAuthorizationException(AuthorizationException e) {
@@ -49,14 +59,13 @@ public class GlobalExceptionHandler {
         return ResponseResult.fail(e.getMessage());
     }
 
-
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public ResponseResult<?> handleMissingServletRequestParameterException(MissingServletRequestParameterException e) {
         log.warn("参数校验异常: {}", e.toString());
         return ResponseResult.fail(e.getParameterName() + "不能为空");
     }
-
+    
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler({BindException.class, ConstraintViolationException.class})
     public ResponseResult<?> handleParamVerification(Exception e) {
