@@ -3,10 +3,13 @@ package com.xuejingpan.xjpboot.web.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.xuejingpan.xjpboot.common.annotation.OperationLog;
 import com.xuejingpan.xjpboot.common.result.ResponseResult;
+import com.xuejingpan.xjpboot.common.validation.Insert;
+import com.xuejingpan.xjpboot.common.validation.Update;
 import com.xuejingpan.xjpboot.service.UserService;
 import com.xuejingpan.xjpboot.web.dto.UserDTO;
 import com.xuejingpan.xjpboot.web.dto.UserPageDTO;
 import com.xuejingpan.xjpboot.web.vo.UserVO;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -31,14 +34,14 @@ public class AdminController {
 
     @OperationLog(content = "添加用户")
     @PostMapping("user")
-    public ResponseResult<?> addUser(UserDTO userDTO) {
+    public ResponseResult<?> addUser(@Validated(Insert.class) @RequestBody UserDTO userDTO) {
         userService.addUser(userDTO);
         return ResponseResult.success();
     }
 
     @OperationLog(content = "更新用户信息")
     @PutMapping("user")
-    public ResponseResult<?> updateUser(UserDTO userDTO) {
+    public ResponseResult<?> updateUser(@Validated(Update.class) @RequestBody UserDTO userDTO) {
         userService.updateUser(userDTO);
         return ResponseResult.success();
     }

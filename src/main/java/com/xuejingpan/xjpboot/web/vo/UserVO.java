@@ -11,6 +11,11 @@ import lombok.Data;
 public class UserVO {
 
     /**
+     * id
+     */
+    private Integer id;
+
+    /**
      * 账号
      */
     private String account;

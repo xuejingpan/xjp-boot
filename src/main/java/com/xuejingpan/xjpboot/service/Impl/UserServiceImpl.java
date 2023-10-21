@@ -31,22 +31,25 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserVO getUser(Integer id) {
-        return null;
+        UserDO userDO = userMapper.selectById(id);
+        return BeanUtil.copyFrom(userDO, UserVO::new);
     }
 
     @Override
     public void addUser(UserDTO userDTO) {
-
+        UserDO userDO = BeanUtil.copyFrom(userDTO, UserDO::new);
+        userMapper.insert(userDO);
     }
 
     @Override
     public void updateUser(UserDTO userDTO) {
-
+        UserDO userDO = BeanUtil.copyFrom(userDTO, UserDO::new);
+        userMapper.updateById(userDO);
     }
 
     @Override
     public void deleteUser(Integer id) {
-
+        userMapper.deleteById(id);
     }
 
     @Override
