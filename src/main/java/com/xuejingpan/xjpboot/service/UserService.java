@@ -13,10 +13,11 @@ import com.xuejingpan.xjpboot.web.vo.UserVO;
 public interface UserService {
 
     /**
-     * 查询当前用户
-     * @return 当前用户信息
+     * 查询用户
+     * @param id 用户id
+     * @return 用户信息
      */
-    UserVO getUser();
+    UserVO getUser(Integer id);
 
     /**
      * 添加用户

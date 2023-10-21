@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public UserVO getUser() {
+    public UserVO getUser(Integer id) {
         return null;
     }
 

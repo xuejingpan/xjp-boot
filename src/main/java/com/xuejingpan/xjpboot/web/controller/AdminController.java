@@ -17,39 +17,36 @@ import javax.annotation.Resource;
  * @Author xuejingpan
  */
 @RestController
-@RequestMapping("user")
-public class UserController {
+@RequestMapping("admin")
+public class AdminController {
 
     @Resource
     private UserService userService;
 
-    @GetMapping
-    public ResponseResult<UserVO> getUser() {
-        return ResponseResult.success(userService.getUser());
+    @OperationLog(content = "分页查询用户")
+    @GetMapping("user")
+    public ResponseResult<IPage<UserVO>> getUserPage(UserPageDTO userPageDTO) {
+        return ResponseResult.success(userService.getUserPage(userPageDTO));
     }
 
-    @PostMapping
+    @OperationLog(content = "添加用户")
+    @PostMapping("user")
     public ResponseResult<?> addUser(UserDTO userDTO) {
         userService.addUser(userDTO);
         return ResponseResult.success();
     }
 
-    @PutMapping
+    @OperationLog(content = "更新用户信息")
+    @PutMapping("user")
     public ResponseResult<?> updateUser(UserDTO userDTO) {
         userService.updateUser(userDTO);
         return ResponseResult.success();
     }
 
-    @OperationLog(content = "注销用户")
-    @DeleteMapping("admin/{id}")
+    @OperationLog(content = "删除用户")
+    @DeleteMapping("user/{id}")
     public ResponseResult<?> deleteUser(@PathVariable("id") Integer id) {
         userService.deleteUser(id);
         return ResponseResult.success();
-    }
-
-    @OperationLog(content = "分页查询用户")
-    @GetMapping("admin/user")
-    public ResponseResult<IPage<UserVO>> getUserPage(UserPageDTO userPageDTO) {
-        return ResponseResult.success(userService.getUserPage(userPageDTO));
     }
 }
