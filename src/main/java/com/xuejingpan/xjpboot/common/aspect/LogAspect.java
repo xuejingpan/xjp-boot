@@ -42,6 +42,7 @@ public class LogAspect {
 
     @Around("logPointCut()")
     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
+        System.out.println("AOP开始");
         OperationLogBO operationLogBO = initOperationLogBO(joinPoint);
         Object result;
         startTime.set(System.currentTimeMillis());

@@ -34,3 +34,7 @@ logging:
     com.xuejingpan.xjpboot.dao.mapper: debug
   file:
     name: ./logs/xjp-boot.log
+#  pattern:
+#    #file: "%d [%thread] [%X{traceId:--}] %-5level %logger - %msg%n"
+#    file: "%d [%t] %-5level %logger{36} - %msg%n"
+#    console: "[%d] [%X{traceId:--}] %thread %-5level %logger{60}: %msg%n"

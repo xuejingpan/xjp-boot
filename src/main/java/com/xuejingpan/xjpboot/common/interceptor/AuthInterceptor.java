@@ -14,6 +14,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Optional;
 
 /**
  * @ClassName AuthInterceptor
@@ -25,16 +26,14 @@ public class AuthInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        System.out.println("拦截器开始");
         // 如果是OPTIONS请求，则放行
         if (HttpMethod.OPTIONS.toString().equals(request.getMethod())) {
             response.setStatus(HttpStatus.NO_CONTENT.value());
             return true;
         }
-        String traceId = request.getHeader(Headers.TRACE_ID);
-        if (traceId == null) {
-            traceId = UUIDUtil.getUUID();
-        }
-        MDC.put(Mdc.TRACE_ID, traceId);
+//        String traceId = Optional.ofNullable(request.getHeader(Headers.TRACE_ID)).orElseGet(UUIDUtil::getUUID);
+//        MDC.put(Mdc.TRACE_ID, traceId);
         String authorization = request.getHeader(Headers.TOKEN);
         if (authorization == null) {
             throw new AuthenticationException(request.getRequestURI() + "请求的token为空");
@@ -50,6 +49,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        System.out.println("拦截器结束");
         // 清除MDC中的数据
         MDC.clear();
     }

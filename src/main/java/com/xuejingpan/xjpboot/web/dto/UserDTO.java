@@ -4,6 +4,7 @@ import com.xuejingpan.xjpboot.common.validation.Insert;
 import com.xuejingpan.xjpboot.common.validation.Update;
 import lombok.Data;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
@@ -43,5 +44,6 @@ public class UserDTO {
     /**
      * 邮箱
      */
+    @Email(message = "邮箱格式不正确")
     private String email;
 }
